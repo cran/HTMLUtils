@@ -52,16 +52,20 @@ BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
 	width=480, height=480, verbose=1, JSCPATH = NULL);
 	
 	#example with absolute paths for graphfiles :
-	png("/tmp/Fig1.png");
+	Fig1 <- paste(tempdir(),"/Fig1.png",sep="")
+	png(Fig1);
 	plot(rnorm(100));
 	dev.off()
-	png("/tmp/Fig2.png");
+	Fig2 <- paste(tempdir(),"/Fig2.png",sep="")
+	png(Fig2);
 	plot(1:10);
 	dev.off();
 	
-	BasicHTML( HTMLobjects = list("/tmp/Fig1.png", "/tmp/Fig2.png"), Captions=c("Gaussian noise","seq 1:10"),  
+	BasicHTML( HTMLobjects = list(Fig1, Fig2), Captions=c("Gaussian noise","seq 1:10"),  
 	MenuLabels = c("Marvel at the graph below","scatterplots are nice"), title="Test Page",
 	width=480, height=480, verbose=1, JSCPATH = NULL);
+	#cleanup:
+	system(paste("rm ", Fig1));system(paste("rm ", Fig2))
 
  #example with sorted table:
  \dontrun{x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));}

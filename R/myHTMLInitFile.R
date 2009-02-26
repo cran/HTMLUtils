@@ -4,9 +4,11 @@ function (outdir = tempdir(), filename = "index", extension = "html",
     Title = "R output", NavTitle = "", CSSFile = "R2HTML.css", useLaTeX = TRUE, 
     useGrid = TRUE, img.logo.path =paste(Sys.getenv("HOME"), "/public_html/",sep=""), img.logo = "logo-SenseNetworks.png", img.href= 'http://www.sensenetworks.com', JSCPATH = NULL) 
 {
-	if (system("uname",TRUE) == "Linux") {#means we have a Web server
+ 	ret <- try(tmp <- system("uname",TRUE));
+        if (class(ret) != "try-error")
+	  if (tmp == "Linux") {#means we have a Web server
 		img.logo.path = paste("/~", system("whoami",TRUE),"/",sep="");#"/~markus/"
-	}
+	 }
 	img.logo = paste(img.logo.path, img.logo, sep="")
     if (HTMLframe == FALSE) {
         file <- file.path(outdir, paste(filename, ".", extension, 
