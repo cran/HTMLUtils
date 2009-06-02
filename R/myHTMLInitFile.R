@@ -2,7 +2,7 @@
 function (outdir = tempdir(), filename = "index", extension = "html", 
     HTMLframe = TRUE, BackGroundColor = "FFFFFF", BackGroundImg = "", 
     Title = "R output", NavTitle = "", CSSFile = "R2HTML.css", useLaTeX = TRUE, 
-    useGrid = TRUE, img.logo.path =paste(Sys.getenv("HOME"), "/public_html/",sep=""), img.logo = "logo-SenseNetworks.png", img.href= 'http://www.sensenetworks.com', JSCPATH = NULL) 
+    useGrid = TRUE, img.logo.path =paste(Sys.getenv("HOME"), "/public_html/",sep=""), img.logo = "logo-SenseNetworks.png", img.href= 'http://www.sensenetworks.com', JSCPATH = NULL, REFRESH = "") 
 {
  	ret <- try(tmp <- system("uname",TRUE));
         if (class(ret) != "try-error")
@@ -48,10 +48,11 @@ function (outdir = tempdir(), filename = "index", extension = "html",
         absfileindex <- file.path(outdir, paste(filename, ".", 
             extension, sep = ""))
         #cat(filemenu, filemain, absfilemenu, file, absfileindex);
-        assign(".HTML.file", absfilemain, env = .GlobalEnv)
-        cat(paste("<html><head>\t\n <title>", Title, "</title>\n <meta http-equiv=content-type content=text/html;charset=iso-8859-1>\n <frameset cols=250,* border=1 frameborder=yes><frame src=", 
+        assign(".HTML.file", absfilemain, env = .GlobalEnv);
+        if (is.numeric(REFRESH)) REFRESH <- paste('<meta http-equiv="refresh" content="',REFRESH,'" />',sep="");
+        cat(paste("<html><head>\t\n <title>", Title, "</title>\n <meta http-equiv=content-type content=text/html;charset=iso-8859-1>\n ", REFRESH ," </head> \n <frameset cols=250,* border=1 frameborder=yes><frame src=", 
             filemenu, " name=menu scrolling=yes><frame src=", 
-            filemain, " name=main scrolling=yes></frameset></body></html>"), 
+            filemain, " name=main scrolling=yes></frameset> \n </html>"), 
             append = FALSE, sep = "", file = absfileindex)
          if (nchar(img.href[1])==0){
         	IMGSTRING <- paste("<img src='",img.logo[1],"' width = 150>",sep="");

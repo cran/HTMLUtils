@@ -4,7 +4,7 @@
 \title{ to come }
 \description{ to come }
 \usage{
-CairoWorks(testfile = "/tmp/tmp.png", verbose = 0)
+CairoWorks(testfile = paste(tempdir(),"/tmp.png",sep=""), verbose = 0)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -10,7 +10,7 @@
 FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", sep = ""), 
       path = "tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", 
       file = "tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL,
-      title = "", width = 480, height = 480, verbose = 1)
+      title = "", width = 480, height = 480, REFRESH = "", verbose = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -28,6 +28,7 @@ FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", se
   \item{title}{ title to be written in the navigation/menu page }
   \item{width}{ width for all graphfiles }
   \item{height}{ height for all graphfiles }
+  \item{REFRESH}{Meta refresh is a method of instructing a web browser to automatically refresh the current web page after a given time interval. }
   \item{verbose}{ level of verbosity}
 }
 \details{
@@ -79,7 +80,7 @@ FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", se
  \dontrun{FramedHTML(HTMLobjects = list("Fig1.png", x, "Fig2.png"), 
  	MenuLabels1 = c("Label1","Label2","Label3"), MenuLabels2 = c("Marvel at the graph below","JavaScript rocks","scatterplots are nice"),
  	Captions=c("Gaussian noise","Gaussian and uniform random numbers", "seq 1:10"),
- 	 path = "tmp", file = "index",sep=""));}
+ 	 path = "tmp", file = "index");}
  
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

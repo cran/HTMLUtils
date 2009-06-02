@@ -1,5 +1,5 @@
 `FramedHTML` <-
-function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep=""), path="tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", file="tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL, title="", width=480, height=480, verbose=1){
+function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep=""), path="tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", file="tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL, title="", width=480, height=480, REFRESH = "", verbose=1){
   #FramedHTML(cmds = c("plot(rnorm(100));","plot(1:10);"), HTMLobjects =list("Fig1.png", "Fig2.png"), Captions=c("Gaussian noise","seq 1:10"), MenuLabels1 = c("Label1","Label2"), MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), title="Test Page",verbose=1);
   #x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
   #FramedHTML(HTMLobjects =list(x,"Fig1.png", "Fig2.png"), Captions=c("jadejade","Gaussian noise","seq 1:10"), MenuLabels1 = c("sorted table","Label1","Label2"), MenuLabels2 = c("the magic of javascript","Marvel at the graph below","scatterplots are nice"), title="Test Page",verbose=1)
@@ -51,7 +51,7 @@ function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep="")
    JSCPATH <- paste(paste(rep("../", NoDirs),collapse=""), "jsc",sep="");
    if (substring(file,1,1) != "/") {outdir = "."} else {outdir = ""}
    
-  targetBig <- myHTMLInitFile(outdir = outdir, file, HTMLframe =TRUE, NavTitle = title, Title = "", JSCPATH= JSCPATH, useLaTeX = FALSE)
+  targetBig <- myHTMLInitFile(outdir = outdir, file, HTMLframe =TRUE, NavTitle = title, Title = "", JSCPATH= JSCPATH, useLaTeX = FALSE, REFRESH = REFRESH)
   target <- targetBig["target"]
   target.menu <- targetBig["targetmenu"]
   target.main <- targetBig["targetmain"]

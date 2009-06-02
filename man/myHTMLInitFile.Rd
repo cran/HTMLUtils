@@ -6,7 +6,7 @@
   Those two functions handle the beginning and the ending of a HTML report, by writing the HTML <body><head><title></title></head>...</body> tags and their options. When working manually, the user may need to use it's own functions or to explicitly write to a file using cat("", file=).
 }
 \usage{
-myHTMLInitFile(outdir = tempdir(), filename = "index", extension = "html", HTMLframe = TRUE, BackGroundColor = "FFFFFF", BackGroundImg = "", Title = "R output", NavTitle = "", CSSFile = "R2HTML.css", useLaTeX = TRUE, useGrid = TRUE, img.logo.path = paste(Sys.getenv("HOME"), "/public_html/", sep = ""), img.logo = "logo-SenseNetworks.png", img.href = "http://www.sensenetworks.com", JSCPATH = NULL)
+myHTMLInitFile(outdir = tempdir(), filename = "index", extension = "html", HTMLframe = TRUE, BackGroundColor = "FFFFFF", BackGroundImg = "", Title = "R output", NavTitle = "", CSSFile = "R2HTML.css", useLaTeX = TRUE, useGrid = TRUE, img.logo.path = paste(Sys.getenv("HOME"), "/public_html/", sep = ""), img.logo = "logo-SenseNetworks.png", img.href = "http://www.sensenetworks.com", JSCPATH = NULL, REFRESH = "")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,6 +25,7 @@ myHTMLInitFile(outdir = tempdir(), filename = "index", extension = "html", HTMLf
   \item{img.logo}{ }
   \item{img.href}{ }
   \item{JSCPATH}{ }
+  \item{REFRESH}{Meta refresh is a method of instructing a web browser to automatically refresh the current web page after a given time interval. }
 }
 \details{ }
 \value{  }
