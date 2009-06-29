@@ -1,5 +1,5 @@
 `FramedHTML` <-
-function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep=""), path="tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", file="tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL, title="", width=480, height=480, REFRESH = "", verbose=1){
+function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep=""), path="tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", file="tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL, title="", width=480, height=480, REFRESH = "", APPEND = FALSE, verbose=1){
   #FramedHTML(cmds = c("plot(rnorm(100));","plot(1:10);"), HTMLobjects =list("Fig1.png", "Fig2.png"), Captions=c("Gaussian noise","seq 1:10"), MenuLabels1 = c("Label1","Label2"), MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), title="Test Page",verbose=1);
   #x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
   #FramedHTML(HTMLobjects =list(x,"Fig1.png", "Fig2.png"), Captions=c("jadejade","Gaussian noise","seq 1:10"), MenuLabels1 = c("sorted table","Label1","Label2"), MenuLabels2 = c("the magic of javascript","Marvel at the graph below","scatterplots are nice"), title="Test Page",verbose=1)
@@ -10,7 +10,7 @@ function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep="")
   #Args <- list();
   #return(Args)
   
-  require(R2HTML);require(Cairo);  
+  require(R2HTML);#require(Cairo);  
   WD <- getwd();
   on.exit(setwd(WD))
   #The paths can be confusing as
@@ -51,27 +51,49 @@ function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep="")
    JSCPATH <- paste(paste(rep("../", NoDirs),collapse=""), "jsc",sep="");
    if (substring(file,1,1) != "/") {outdir = "."} else {outdir = ""}
    
-  targetBig <- myHTMLInitFile(outdir = outdir, file, HTMLframe =TRUE, NavTitle = title, Title = "", JSCPATH= JSCPATH, useLaTeX = FALSE, REFRESH = REFRESH)
+  
+  targetBig <- myHTMLInitFile(outdir = outdir, file, HTMLframe =TRUE, NavTitle = title, Title = "", JSCPATH= JSCPATH, useLaTeX = FALSE, REFRESH = REFRESH, APPEND = APPEND)
+  
   target <- targetBig["target"]
   target.menu <- targetBig["targetmenu"]
   target.main <- targetBig["targetmain"]
   file = target.main;
   HTMLCSS(file = file, CSSfile = "R2HTML");
   #HTML.title(as.title(title), HR=2, file=file);
-  HTML.title(as.title(title), HR=2, file=target.menu);
+  if (!APPEND) HTML.title(as.title(title), HR=2, file=target.menu);
   
-  BasicHTML(cmds, HTMLobjects, Captions, MenuLabels2, Comments, file, title, width=width, height, FRAMES=TRUE, JSCPATH= JSCPATH, verbose=verbose);
-  MenuNumber <- 1;
+  if (APPEND){
+  	tmp <- scan(target.menu, what = "");
+  	ExistingLabels <- grep("#Num", tmp);
+  	MenuNumber <- length(ExistingLabels) + 1;
+  } else {
+    MenuNumber <- 1;
+  }
+    
+    if (verbose >1) {
+    	print(HTMLobjects);
+    	print(targetBig);
+    	print(getwd())
+    }
+  BasicHTML(cmds, HTMLobjects, Captions, MenuLabels2, Comments, file, title, width=width, height, FRAMES=TRUE, JSCPATH= JSCPATH, APPEND = APPEND, verbose=verbose);
+
   for (i in seq(along= HTMLobjects)){
   	MenuLabel <- ""; 
   	  if (!missing(MenuLabels1)) if (!is.null(MenuLabels1)) if (length(MenuLabels1) == length(HTMLobjects)) {MenuLabel <- MenuLabels1[i]};
   	tmp <- paste("href='",target.main,"#Num", MenuNumber,"'",sep="");
-    HTMLli(paste("<a class=command ", tmp," target=main> ", MenuLabel," </a>",sep=""),file= target.menu);
+  	tt <- paste("<a class=command ", tmp," target=main> ", MenuLabel," </a>",sep="");
+    HTMLli(tt,file= target.menu);
+    cat('\n', file = target.menu, append = TRUE)
+    if (verbose >1) print(tt)
     MenuNumber = MenuNumber + 1;
   }
   
+
   CleanUpdevs();
-  MyReportEnd(file=target.main);
+  
+  #for now I am not adding a clean end of html footer in order to keep the pages open for appending operations
+ #most browsers seem to be able to handle this just fine...
+ # MyReportEnd(file=target.main);
   if (!is.null(WD)) setwd(WD);
   #return(targetBig)
 }

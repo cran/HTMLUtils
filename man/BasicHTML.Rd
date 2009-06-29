@@ -8,7 +8,7 @@
 \usage{
 BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
          file = "tmp.html", title = "", width = 480, height = 480, 
-         FRAMES = FALSE, JSCPATH = "jsc", LaunchPage = FALSE, verbose = 0)
+         FRAMES = FALSE, JSCPATH = "jsc", LaunchPage = FALSE, APPEND = FALSE, verbose = 0)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,13 +17,14 @@ BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
   \item{Captions}{ vector of captions; these go directly below the graphs  }
   \item{MenuLabels}{ vector of labels for the main page.}
   \item{Comments}{ Text/comments to be written between the graphs }
-  \item{file}{ file name of main page; '.html' extension will be added. The '_main' and '_menu' pages use this base as well. }
+  \item{file}{ file name of main page; '.html' extension will be added. The '\_main' and '\_menu' pages use this base as well. }
   \item{title}{ title to be written in the navigation/menu page }
   \item{width}{ width for all graphfiles }
   \item{height}{ height for all graphfiles }
   \item{FRAMES}{ is this an HTML page with frames ? }
   \item{JSCPATH}{ path that should contain the jsc components. If non existing, user will be prompted for installation. }
   \item{LaunchPage}{ launch the page ?}
+  \item{APPEND}{ append to existing HTML page ?}
   \item{verbose}{ level of verbosity}
   
 }
@@ -37,6 +38,7 @@ BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
 \seealso{ \link{FramedHTML} }
 \examples{
 	#example with plots and graphfiles being generated on the fly:
+	\dontrun{
 	BasicHTML(cmds = list("plot(rnorm(100));","plot(1:10);"), HTMLobjects = list("Fig1.png", "Fig2.png"), Captions=c("Gaussian noise","seq 1:10"),  MenuLabels = c("Marvel at the graph below","scatterplots are nice"), title="Test Page",width=480, height=480, verbose=1, JSCPATH = NULL)
 	
 	#example with plots and graphfiles having been generated beforehand:
@@ -65,8 +67,8 @@ BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
 	MenuLabels = c("Marvel at the graph below","scatterplots are nice"), title="Test Page",
 	width=480, height=480, verbose=1, JSCPATH = NULL);
 	#cleanup:
-	system(paste("rm ", Fig1));system(paste("rm ", Fig2))
-
+	#system(paste("rm ", Fig1));system(paste("rm ", Fig2))
+}
  #example with sorted table:
  \dontrun{x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));}
  \dontrun{attr(x, "HEADER") <- "some random numbers";}

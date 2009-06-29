@@ -2,8 +2,21 @@
 function (outdir = tempdir(), filename = "index", extension = "html", 
     HTMLframe = TRUE, BackGroundColor = "FFFFFF", BackGroundImg = "", 
     Title = "R output", NavTitle = "", CSSFile = "R2HTML.css", useLaTeX = TRUE, 
-    useGrid = TRUE, img.logo.path =paste(Sys.getenv("HOME"), "/public_html/",sep=""), img.logo = "logo-SenseNetworks.png", img.href= 'http://www.sensenetworks.com', JSCPATH = NULL, REFRESH = "") 
+    useGrid = TRUE, img.logo.path =paste(Sys.getenv("HOME"), "/public_html/",sep=""), img.logo = "logo-SenseNetworks.png", img.href= 'http://www.sensenetworks.com', JSCPATH = NULL, APPEND = FALSE, REFRESH = "") 
 {
+	if (APPEND){
+	    filemenu <- paste(filename, "_menu.", extension, sep = "")
+        filemain <- paste(filename, "_main.", extension, sep = "")
+        absfilemenu <- file.path(outdir, filemenu)
+        file <- absfilemain <- file.path(outdir, filemain)
+        absfileindex <- file.path(outdir, paste(filename, ".", 
+            extension, sep = ""))
+        #cat(filemenu, filemain, absfilemenu, file, absfileindex);
+        assign(".HTML.file", absfilemain, env = .GlobalEnv);
+        #invisible(return(c(targetmain = file, targetmenu=paste(outdir,filemenu,sep=""), target= paste(outdir, filename,".",extension, sep = ""))));
+        invisible(return(c(targetmain = file, targetmenu=filemenu, target= paste(filename,".",extension, sep = ""))));
+	}
+	
  	ret <- try(tmp <- system("uname",TRUE));
         if (class(ret) != "try-error")
 	  if (tmp == "Linux") {#means we have a Web server

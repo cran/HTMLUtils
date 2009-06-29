@@ -8,7 +8,7 @@ InstallJSC(JSCPATH)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{JSCPATH}{ path to install the jsc directory to. Recommended is the base public_html directory. }
+  \item{JSCPATH}{ path to install the jsc directory to. Recommended is the base public\_html directory. }
 }
 \details{ }
 \value{  }

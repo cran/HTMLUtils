@@ -10,16 +10,16 @@
 FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", sep = ""), 
       path = "tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", 
       file = "tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL,
-      title = "", width = 480, height = 480, REFRESH = "", verbose = 1)
+      title = "", width = 480, height = 480, REFRESH = "", APPEND = FALSE, verbose = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{cmds}{ list of commands that generates the plots. If missing, the graphfiles are assumed to exist already.}
-  \item{basepath}{ base path of \samp{public_html} directory }
+  \item{basepath}{ base path of \samp{public\_html} directory }
   \item{path}{ subdirectory of \code{basepath}; will be created if non existing  }
   \item{Graphpath}{ subdirectory of \samp{basepath/path/} containing the graphfiles; will be created if non existing }
   \item{DiagnosticsPath}{ subdirectory of \samp{basepath/path/} containing diagnostic output; will be created if non existing }
-  \item{file}{ file name of main page; '.html' extension will be added. The '_main' and '_menu' pages use this base as well. }
+  \item{file}{ file name of main page; '.html' extension will be added. The '\_main' and '\_menu' pages use this base as well. }
   \item{HTMLobjects}{ list of graph filenames, either to be created by the list of commands or to be copied to the Figures subdirectory and/or dataframes to be displayed in sortable tables.}
   \item{Captions}{ vector of captions; these go directly below the graphs  }
   \item{MenuLabels1}{ vector of labels for the menu navigation page. It helps to keep these succinct and short ! }
@@ -29,6 +29,7 @@ FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", se
   \item{width}{ width for all graphfiles }
   \item{height}{ height for all graphfiles }
   \item{REFRESH}{Meta refresh is a method of instructing a web browser to automatically refresh the current web page after a given time interval. }
+  \item{APPEND}{ append to existing HTML page ?}
   \item{verbose}{ level of verbosity}
 }
 \details{
@@ -43,7 +44,9 @@ FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", se
 }
 \seealso{ \link{BasicHTML} }
 \examples{
+	
 	#example with plots and graphfiles being generated on the fly:
+\dontrun{
 	FramedHTML(cmds = list("plot(rnorm(100));","plot(1:10);"), HTMLobjects =list("Fig1.png", "Fig2.png"), Captions=c("Gaussian noise","seq 1:10"), MenuLabels1 = c("Label1","Label2"), MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), Comments  = c("100 random numbers","Simple plot"), title="Test Page",width=480, height=480, verbose=1)
 	
 	#example with plots and graphfiles having been generated beforehand:
@@ -72,8 +75,8 @@ FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", se
 	 MenuLabels1 = c("Label1","Label2"), MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), 
 	 Comments  = c("100 random numbers","Simple plot"), title="Test Page",width=480, height=480, verbose=1);
 	#cleanup:
-	system(paste("rm ", Fig1));system(paste("rm ", Fig2))
-	
+	#system(paste("rm ", Fig1));system(paste("rm ", Fig2))
+}	
 	 #example with sorted table:
  \dontrun{x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));}
  \dontrun{attr(x, "HEADER") <- "some random numbers";}
