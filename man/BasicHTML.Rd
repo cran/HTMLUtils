@@ -8,7 +8,7 @@
 \usage{
 BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
          file = "tmp.html", title = "", width = 480, height = 480, 
-         FRAMES = FALSE, JSCPATH = "jsc", LaunchPage = FALSE, APPEND = FALSE, verbose = 0)
+         FRAMES = FALSE, JSCPATH = "jsc", LaunchPage = FALSE, APPEND = FALSE,  href = NULL, verbose = 0)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -25,6 +25,7 @@ BasicHTML(cmds = NULL, HTMLobjects, Captions, MenuLabels, Comments,
   \item{JSCPATH}{ path that should contain the jsc components. If non existing, user will be prompted for installation. }
   \item{LaunchPage}{ launch the page ?}
   \item{APPEND}{ append to existing HTML page ?}
+  \item{href}{ links to other HTML pages}
   \item{verbose}{ level of verbosity}
   
 }

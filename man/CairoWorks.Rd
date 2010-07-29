@@ -8,8 +8,8 @@ CairoWorks(testfile = paste(tempdir(),"/tmp.png",sep=""), verbose = 0)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{testfile}{ }
-  \item{verbose}{ }
+  \item{testfile}{test file to create}
+  \item{verbose}{ level of verbosity}
 }
 \details{ }
 \value{  }

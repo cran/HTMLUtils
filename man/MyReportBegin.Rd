@@ -8,9 +8,9 @@ MyReportBegin(file = "report.html", title = "My Report Title", header = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{file}{ }
-  \item{title}{ }
-  \item{header}{ }
+  \item{file}{ filename }
+  \item{title}{ title for HTML page}
+  \item{header}{ header yes/no}
 }
 \details{ }
 \value{  }

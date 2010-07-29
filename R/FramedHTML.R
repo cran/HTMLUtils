@@ -1,5 +1,5 @@
 `FramedHTML` <-
-function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep=""), path="tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", file="tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL, title="", width=480, height=480, REFRESH = "", APPEND = FALSE, verbose=1){
+function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep=""), path="tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", file="tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL,  href = NULL, Comments=NULL, title="", width=480, height=480, REFRESH = "", APPEND = FALSE, verbose=1){
   #FramedHTML(cmds = c("plot(rnorm(100));","plot(1:10);"), HTMLobjects =list("Fig1.png", "Fig2.png"), Captions=c("Gaussian noise","seq 1:10"), MenuLabels1 = c("Label1","Label2"), MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), title="Test Page",verbose=1);
   #x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
   #FramedHTML(HTMLobjects =list(x,"Fig1.png", "Fig2.png"), Captions=c("jadejade","Gaussian noise","seq 1:10"), MenuLabels1 = c("sorted table","Label1","Label2"), MenuLabels2 = c("the magic of javascript","Marvel at the graph below","scatterplots are nice"), title="Test Page",verbose=1)
@@ -75,7 +75,7 @@ function(cmds=NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/",sep="")
     	print(targetBig);
     	print(getwd())
     }
-  BasicHTML(cmds, HTMLobjects, Captions, MenuLabels2, Comments, file, title, width=width, height, FRAMES=TRUE, JSCPATH= JSCPATH, APPEND = APPEND, verbose=verbose);
+  BasicHTML(cmds, HTMLobjects, Captions, MenuLabels2, href=href, Comments, file, title, width=width, height, FRAMES=TRUE, JSCPATH= JSCPATH, APPEND = APPEND, verbose=verbose);
 
   for (i in seq(along= HTMLobjects)){
   	MenuLabel <- ""; 

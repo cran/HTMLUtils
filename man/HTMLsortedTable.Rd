@@ -9,12 +9,12 @@ HTMLsortedTable(x, TITLE = "", HEADER = "", file = "tmp.html", path = paste(Sys.
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x}{data frame or matrix with column names }
-  \item{TITLE}{ }
-  \item{HEADER}{ }
-  \item{file}{ }
-  \item{path}{ }
-  \item{JSCPATH}{ }
-  \item{debug}{ }
+  \item{TITLE}{title for the HTML page }
+  \item{HEADER}{ header to display for the sorted table }
+  \item{file}{ file to write to }
+  \item{path}{ directory to create the file in }
+  \item{JSCPATH}{ directory that contains the javascript components}
+  \item{debug}{ level of verbosity}
 }
 \details{ }
 \value{  }

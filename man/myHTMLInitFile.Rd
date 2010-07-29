@@ -17,14 +17,14 @@ myHTMLInitFile(outdir = tempdir(), filename = "index", extension = "html", HTMLf
   \item{BackGroundColor}{ option bgcolor for HTML tag <body>}
   \item{BackGroundImg}{ option background for HTML tag <body>}
   \item{Title}{ string to pass to HTML <title> tag  }
-   \item{NavTitle}{ }
+   \item{NavTitle}{ title of navigation page }
   \item{CSSFile}{ path and name of a CSS file to use }
   \item{useLaTeX}{ boolean - add required references to javascript AsciiMathML in order to use \code{as.latex}}
   \item{useGrid}{ boolean - add required references to javascript grid in order to use R2HTML grid fonctions}
-  \item{img.logo.path}{ }
-  \item{img.logo}{ }
-  \item{img.href}{ }
-  \item{JSCPATH}{ }
+  \item{img.logo.path}{ directory that contains the logo}
+  \item{img.logo}{name of logo file }
+  \item{img.href}{ the URL the logo image points to}
+  \item{JSCPATH}{directory that contains the javascript code }
   \item{APPEND}{ append to existing HTML page ?}
   \item{REFRESH}{Meta refresh is a method of instructing a web browser to automatically refresh the current web page after a given time interval. }
 }

@@ -8,7 +8,7 @@ MyReportEnd(file = "report.html")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{file}{ }
+  \item{file}{file to append to  }
 }
 \details{ }
 \value{  }

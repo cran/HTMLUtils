@@ -9,7 +9,7 @@
 \usage{
 FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", sep = ""), 
       path = "tmp", Graphpath = "Figures/", DiagnosticsPath = "Diagnostics", 
-      file = "tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL, Comments=NULL,
+      file = "tmp", HTMLobjects, Captions=NULL, MenuLabels1=NULL, MenuLabels2=NULL,  href = NULL, Comments=NULL,
       title = "", width = 480, height = 480, REFRESH = "", APPEND = FALSE, verbose = 1)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -24,6 +24,7 @@ FramedHTML(cmds = NULL, basepath = paste(Sys.getenv("HOME"), "/public_html/", se
   \item{Captions}{ vector of captions; these go directly below the graphs  }
   \item{MenuLabels1}{ vector of labels for the menu navigation page. It helps to keep these succinct and short ! }
   \item{MenuLabels2}{ vector of labels for the main page; these go on top of the individual graphs, so they are complementary to the captions. }
+  \item{href}{ links to other HTML pages}
   \item{Comments}{ Text/comments to be written between the graphs }
   \item{title}{ title to be written in the navigation/menu page }
   \item{width}{ width for all graphfiles }

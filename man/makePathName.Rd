@@ -8,9 +8,9 @@ makePathName(path, MakePath = TRUE, verbose = 0)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{path}{ }
-  \item{MakePath}{ }
-  \item{verbose}{ }
+  \item{path}{ path to create}
+  \item{MakePath}{ if yes, create directory if not exists }
+  \item{verbose}{level of verbosity }
 }
 \details{ }
 \value{  }
