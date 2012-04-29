@@ -1,0 +1,4 @@
+import(R2HTML)
+
+exportPattern("^[[:alpha:]]+")
+

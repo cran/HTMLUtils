@@ -1,5 +1,9 @@
-`MyReportBegin` <-
-function(file = "report.html",  title = "My Report Title", header = NULL) {  
+`MyReportBegin` <- function#gracefully initializes the HTML page
+###gracefully initializes the HTML page
+(file = "report.html",  ##<<  filename 
+ title = "My Report Title", ##<< title for HTML page
+ header = NULL ##<< header yes/no
+ ) {  
   if (is.null(header)) {
   	cat(paste("<html><head><title>", title, "</title></head>", "<body bgcolor=#D0D0D0>","<p align= left >",  sep = ""), file = file, append = FALSE);
   } else {

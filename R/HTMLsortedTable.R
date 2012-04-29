@@ -1,5 +1,13 @@
-`HTMLsortedTable` <-
-function(x, TITLE="", HEADER = "", file = "tmp.html", path = paste(Sys.getenv("HOME"), "/public_html/",sep=""), JSCPATH = "jsc", debug=0){
+`HTMLsortedTable` <-function#create sortable table 
+### create sortable table using JavaScript components in \code{JSCPATH} directory
+(x, ##<< data frame or matrix with column names 
+ TITLE="", ##<< title for the HTML page
+ HEADER = "", ##<< header to display for the sorted table
+ file="tmp.html", ##<< file name of main page; '.html' extension will be added. The '\_main' and '\_menu' pages use this base as well.
+ JSCPATH = "jsc", ##<< path that should contain the jsc components. If non existing, user will be prompted for installation. 
+ path = paste(Sys.getenv("HOME"), "/public_html/",sep=""),##<<  directory to create the file in
+ debug=0 ##<<level of verbosity
+){
 #left to do: specify the paths !! Right now, this works only in the main public_html directory that contains the jsc/ folder!
 #example: x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
 #         HTMLsortedTable(x, TITLE= "some random numbers", file = NULL)

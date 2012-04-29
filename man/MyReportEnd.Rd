@@ -1,21 +1,17 @@
-\name{MyReportEnd}
-\alias{MyReportEnd}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{ gracefully finalizes the HTML page }
-\description{ gracefully finalizes the HTML page }
-\usage{
-MyReportEnd(file = "report.html")
-}
-%- maybe also 'usage' for other objects documented here.
-\arguments{
-  \item{file}{file to append to  }
-}
-\details{ }
-\value{  }
-\references{   }
-\author{  Markus Loecher, Sense Networks <markus@sensenetworks.com>  }
-\note{ }
-\seealso{  }
-\examples{ }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+\name{MyReportEnd}
+\alias{MyReportEnd}
+\title{gracefully finalizes the HTML page}
+\description{gracefully finalizes the HTML page}
+\usage{MyReportEnd(file = "report.html")}
+\arguments{
+  \item{file}{file to append to}
+}
+
+
+
+\author{"Markus Loecher, Berlin School of Economics and Law (BSEL)" <markus.loecher@gmail.com>}
+
+
+
+
+

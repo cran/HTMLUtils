@@ -1,5 +1,9 @@
-`makePathName` <-
-function(path, MakePath=TRUE, verbose=0){
+`makePathName` <- function# create appropriate directory structure if needed
+### create appropriate directory structure if needed
+(path, ##<< path to create
+ MakePath=TRUE, ##<< if yes, create directory if not exists
+ verbose=0 ##<< level of verbosity
+ ){
   N <- nchar(path);
   if (substring(path,N,N) != "/"){
   	path <- paste(path, "/",sep="")
@@ -13,5 +17,6 @@ function(path, MakePath=TRUE, verbose=0){
   }
 
   return(path)
+### returns absolute path
 }
 
