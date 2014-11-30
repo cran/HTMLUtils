@@ -32,7 +32,7 @@ HTML <body><head><title></title></head>...</body> tags and their options. When w
 
 
 
-\author{"Markus Loecher, Berlin School of Economics and Law (BSEL)" <markus.loecher@gmail.com>}
+\author{"Markus Loecher, Berlin School of Economics and Law (BSEL)"  <markus.loecher@gmail.com>}
 
 
 

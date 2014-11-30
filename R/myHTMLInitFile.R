@@ -29,7 +29,8 @@
         absfileindex <- file.path(outdir, paste(filename, ".", 
             extension, sep = ""))
         #cat(filemenu, filemain, absfilemenu, file, absfileindex);
-        assign(".HTML.file", absfilemain, envir = .GlobalEnv);
+        #assign(".HTML.file", absfilemain, envir = .GlobalEnv);
+        options(".HTML.file"=absfilemain)
         #invisible(return(c(targetmain = file, targetmenu=paste(outdir,filemenu,sep=""), target= paste(outdir, filename,".",extension, sep = ""))));
         invisible(return(c(targetmain = file, targetmenu=filemenu, target= paste(filename,".",extension, sep = ""))));
 	}
@@ -43,7 +44,8 @@
     if (HTMLframe == FALSE) {
         file <- file.path(outdir, paste(filename, ".", extension, 
             sep = ""))
-        assign(".HTML.file", file, envir = .GlobalEnv)
+        #assign(".HTML.file", file, envir = .GlobalEnv)
+        options(".HTML.file"=file)
         txt <- ifelse(useLaTeX, "<html xmlns:mml=\"http://www.w3.org/1998/Math/MathML\">", 
             "<html xmlns=\"http://www.w3.org/1999/xhtml\" \n  xml:lang=\"en\">")
         txt <- c(txt, "<head>")
@@ -78,7 +80,8 @@
         absfileindex <- file.path(outdir, paste(filename, ".", 
             extension, sep = ""))
         #cat(filemenu, filemain, absfilemenu, file, absfileindex);
-        assign(".HTML.file", absfilemain, envir = .GlobalEnv);
+        #assign(".HTML.file", absfilemain, envir = .GlobalEnv);
+        options(".HTML.file"=absfilemain)
         if (is.numeric(REFRESH)) REFRESH <- paste('<meta http-equiv="refresh" content="',REFRESH,'" />',sep="");
         cat(paste("<html><head>\t\n <title>", Title, "</title>\n <meta http-equiv=content-type content=text/html;charset=iso-8859-1>\n ", REFRESH ," </head> \n <frameset cols=250,* border=1 frameborder=yes><frame src=", 
             filemenu, " name=menu scrolling=yes><frame src=", 
