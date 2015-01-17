@@ -101,6 +101,18 @@ FramedHTML( HTMLobjects = list("Fig1.png", "Fig2.png"),
     MenuLabels2 = c("Marvel at the graph below","JavaScript rocks","scatterplots are nice"),
     Captions=c("Gaussian noise","Gaussian and uniform random numbers", "seq 1:10"),Comments = NULL,
     path = "tmp", file = "index");
+
+  #example with sorted tables only, no figures:
+  x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
+  attr(x, "HEADER") <- "some random numbers";
+  y <- cbind.data.frame(y1 = rbinom(10,50,0.3), y2 = rbinom(10,100,0.15));
+  attr(y, "HEADER") <- "rbinom";
+  FramedHTML(HTMLobjects = list( x, y), 
+           MenuLabels1 = c("x","y"), 
+           MenuLabels2 = c("JavaScript rocks","Secret numbers"),
+           Captions=c("Gaussian and uniform random numbers", "Binomial draws"),Comments = NULL,
+           path = "tmp", file = "index");
+
   setwd(owd)
 }
 }

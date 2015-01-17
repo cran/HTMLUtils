@@ -92,6 +92,7 @@
 	  try(HEADER <- attr(HTMLobjects[[i]],"HEADER"));
 	  htable <- HTMLsortedTable(HTMLobjects[[i]], HEADER = HEADER, file = NULL, JSCPATH = JSCPATH);
 	  HTML('<p align= center >', file = file);HTML(htable, file = file);HTML('<BR>', file = file);
+	  HTML(Captions[i], file = file);HTML('<BR>', file = file);
 	  #HTML(x, file = file)
 	}
   }

@@ -1,0 +1,5 @@
+Changes in Version 0.1.7
+
+  o Captions are now also added to data frames.
+
+  o It is now possible to call FramedHTML() with no graphics files.

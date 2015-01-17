@@ -9,8 +9,8 @@ framed HTML pages and dynamically sortable tables.}
 \tabular{ll}{Package: \tab HTMLUtils\cr
 Type: \tab Package\cr
 Title: \tab Facilitates Automated HTML Report Creation\cr
-Version: \tab 0.1.6\cr
-Date: \tab 2014-11-30\cr
+Version: \tab 0.1.7\cr
+Date: \tab 2015-01-17\cr
 Depends: \tab R2HTML\cr
 Suggests: \tab \cr
 Author: \tab "Markus Loecher, Berlin School of Economics and Law (BSEL)"  <markus.loecher@gmail.com>\cr

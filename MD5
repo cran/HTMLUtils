@@ -1,7 +1,8 @@
-9518d98cb2248711e9697da59e6afc3b *DESCRIPTION
+8a9de417d01030e795903d53bbc286e1 *DESCRIPTION
 cefca600a69c12becfbae10512a5e91c *NAMESPACE
-6a5547c948ea014bfe047feb4ec71427 *R/BasicHTML.R
-054e41008f7607e33f113d2cccaf0e3e *R/FramedHTML.R
+30712c837b108c34972aefc834669c00 *NEWS
+24d6d3ba7b14d7066627ca6f8ac89d32 *R/BasicHTML.R
+4c72eb1333c638ba0e013a7c657f590c *R/FramedHTML.R
 785540afe087f305b824de002cd240e1 *R/HTMLhref.R
 315f2488fa4bf45693033f5f18c5006f *R/HTMLsortedTable.R
 fc52627596fc3591b228d79aa2c5e1a1 *R/InstallJSC.R
@@ -45,8 +46,8 @@ d9808624d552dd0d6131e031f71ce9bc *inst/jsc/img/up.gif
 758b02cecce780706e0adde0d9f7fddc *inst/jsc/jsComponents.css
 f2c4018a39957947a8b2838a0da8ecc5 *inst/jsc/jsComponents.js
 f7b68fda3a18fc7f96ac1838a7735c72 *man/BasicHTML.Rd
-4364663c2db11b9cf16d724f745a8b1e *man/FramedHTML.Rd
-b12adfeff18e388f5411a2e67fd021f0 *man/HTMLUtils-package.Rd
+adcb1e8bce771149e97aec41bef33e0e *man/FramedHTML.Rd
+7cbf12021cb6ec5902f83c075f635563 *man/HTMLUtils-package.Rd
 535333acef7f7bf389033cc9c5ff2ebe *man/HTMLhref.Rd
 1f94daa6ba0045e207017e00b0e0c331 *man/HTMLsortedTable.Rd
 41294ce1318836956a4674ff4d379130 *man/InstallJSC.Rd

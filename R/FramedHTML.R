@@ -54,23 +54,26 @@
   graphfiles <- unlist(HTMLobjects[graphIndex]);
  
   if (verbose > 1) browser();
-  for (g in graphfiles) {
-  	graphdir <- dirname(g);
-  	gg <- basename(g);
-  	if (graphdir == "." ) {ggg <- paste(WD, gg,sep="/");#no graphfile paths
-  	} else if (substring(graphdir,1,1) != "/") {ggg <- paste(WD, g,sep="/");#relative graphfile paths 
-  	} else {ggg <- g}#absolute paths
-  	if (verbose) print(ggg);
-    #if (file.exists(ggg) & !file.exists(paste(Graphpath, g,sep="/"))) {
-    if (file.exists(ggg) ) {
-    	if (verbose) cat("copying ", ggg, " to ", paste(basepath, path, Graphpath, gg, sep=""), "\n");
-    	#system(paste("cp ", paste(WD, g,sep="/"), " ", Graphpath, g,sep="") );
-    	system(paste("cp ", ggg, " ", paste(basepath, path, Graphpath, gg, sep="") ,sep="") );
-    } else {cat(ggg, " does not exist, unable to copy !\n");}
+  
+  if (!is.null(graphfiles)){
+    for (g in graphfiles) {
+    	graphdir <- dirname(g);
+    	gg <- basename(g);
+    	if (graphdir == "." ) {ggg <- paste(WD, gg,sep="/");#no graphfile paths
+    	} else if (substring(graphdir,1,1) != "/") {ggg <- paste(WD, g,sep="/");#relative graphfile paths 
+    	} else {ggg <- g}#absolute paths
+    	if (verbose) print(ggg);
+      #if (file.exists(ggg) & !file.exists(paste(Graphpath, g,sep="/"))) {
+      if (file.exists(ggg) ) {
+      	if (verbose) cat("copying ", ggg, " to ", paste(basepath, path, Graphpath, gg, sep=""), "\n");
+      	#system(paste("cp ", paste(WD, g,sep="/"), " ", Graphpath, g,sep="") );
+      	system(paste("cp ", ggg, " ", paste(basepath, path, Graphpath, gg, sep="") ,sep="") );
+      } else {cat(ggg, " does not exist, unable to copy !\n");}
+    }
+    graphfiles <- paste(Graphpath, basename(graphfiles),sep="");
+    HTMLobjects[graphIndex] <- graphfiles;
+    if (verbose) print(graphfiles)
   }
-  graphfiles <- paste(Graphpath, basename(graphfiles),sep="");
-  HTMLobjects[graphIndex] <- graphfiles;
-  if (verbose) print(graphfiles)
   DiagnosticsPath <- makePathName(DiagnosticsPath, TRUE);
   #FullGraphpath <- makePathName(paste(path, Graphpath, sep =""), TRUE);
   #DiagnosticsPath <- makePathName(paste(path,DiagnosticsPath,sep=""), TRUE);
@@ -180,6 +183,18 @@ FramedHTML( HTMLobjects = list("Fig1.png", "Fig2.png"),
     MenuLabels2 = c("Marvel at the graph below","JavaScript rocks","scatterplots are nice"),
     Captions=c("Gaussian noise","Gaussian and uniform random numbers", "seq 1:10"),Comments = NULL,
     path = "tmp", file = "index");
+
+  #example with sorted tables only, no figures:
+  x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
+  attr(x, "HEADER") <- "some random numbers";
+  y <- cbind.data.frame(y1 = rbinom(10,50,0.3), y2 = rbinom(10,100,0.15));
+  attr(y, "HEADER") <- "rbinom";
+  FramedHTML(HTMLobjects = list( x, y), 
+           MenuLabels1 = c("x","y"), 
+           MenuLabels2 = c("JavaScript rocks","Secret numbers"),
+           Captions=c("Gaussian and uniform random numbers", "Binomial draws"),Comments = NULL,
+           path = "tmp", file = "index");
+
   setwd(owd)
 }
 })
