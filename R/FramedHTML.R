@@ -30,13 +30,13 @@
 
   ##note<<  There is not much eror checking. In particular, the lengths of the arguments\code{cmds, graphfiles, Captions, MenuLabels1, MenuLabels2} need to be all the same !
 
-  ##seealso<< \link{BasicHTML} 
-  
+  ##seealso<< \link{BasicHTML}
+
   #ArgNames <- names(formals(FramedHTML));
   #Args <- match.arg(ArgNames );
   #Args <- list();
   #return(Args)
-   
+
   WD <- getwd();
   on.exit(setwd(WD))
   #The paths can be confusing as
@@ -52,15 +52,15 @@
    #If string, assume graphfile:
   graphIndex <- sapply(HTMLobjects,is.character);
   graphfiles <- unlist(HTMLobjects[graphIndex]);
- 
+
   if (verbose > 1) browser();
-  
+
   if (!is.null(graphfiles)){
     for (g in graphfiles) {
     	graphdir <- dirname(g);
     	gg <- basename(g);
     	if (graphdir == "." ) {ggg <- paste(WD, gg,sep="/");#no graphfile paths
-    	} else if (substring(graphdir,1,1) != "/") {ggg <- paste(WD, g,sep="/");#relative graphfile paths 
+    	} else if (substring(graphdir,1,1) != "/") {ggg <- paste(WD, g,sep="/");#relative graphfile paths
     	} else {ggg <- g}#absolute paths
     	if (verbose) print(ggg);
       #if (file.exists(ggg) & !file.exists(paste(Graphpath, g,sep="/"))) {
@@ -79,11 +79,11 @@
   #DiagnosticsPath <- makePathName(paste(path,DiagnosticsPath,sep=""), TRUE);
    JSCPATH <- paste(paste(rep("../", NoDirs),collapse=""), "jsc",sep="");
    if (substring(file,1,1) != "/") {outdir = "."} else {outdir = ""}
-  
-  targetBig <- myHTMLInitFile(outdir = outdir, file, HTMLframe =TRUE, NavTitle = title, 
-                              Title = "", JSCPATH= JSCPATH, useLaTeX = FALSE, REFRESH = REFRESH, 
+
+  targetBig <- myHTMLInitFile(outdir = outdir, file, HTMLframe =TRUE, NavTitle = title,
+                              Title = "", JSCPATH= JSCPATH, useLaTeX = FALSE, REFRESH = REFRESH,
                               APPEND = APPEND, img.logo.path =img.logo.path, img.logo = img.logo, img.href=img.href)
-  
+
   target <- targetBig["target"]
   target.menu <- targetBig["targetmenu"]
   target.main <- targetBig["targetmain"]
@@ -91,7 +91,7 @@
   HTMLCSS(file = file, CSSfile = "R2HTML");
   #HTML.title(as.title(title), HR=2, file=file);
   if (!APPEND) HTML.title(as.title(title), HR=2, file=target.menu);
-  
+
   if (APPEND){
   	tmp <- scan(target.menu, what = "");
   	ExistingLabels <- grep("#Num", tmp);
@@ -99,7 +99,7 @@
   } else {
     MenuNumber <- 1;
   }
-    
+
     if (verbose >1) {
     	print(HTMLobjects);
     	print(targetBig);
@@ -108,7 +108,7 @@
   BasicHTML(cmds, HTMLobjects, Captions, MenuLabels2, href=href, Comments, file, title, width=width, height, FRAMES=TRUE, JSCPATH= JSCPATH, APPEND = APPEND, verbose=verbose);
 
   for (i in seq(along= HTMLobjects)){
-  	MenuLabel <- ""; 
+  	MenuLabel <- "";
   	  if (!missing(MenuLabels1)) if (!is.null(MenuLabels1)) if (length(MenuLabels1) == length(HTMLobjects)) {MenuLabel <- MenuLabels1[i]};
   	tmp <- paste("href='",target.main,"#Num", MenuNumber,"'",sep="");
   	tt <- paste("<a class=command ", tmp," target=main> ", MenuLabel," </a>",sep="");
@@ -117,10 +117,10 @@
     if (verbose >1) print(tt)
     MenuNumber = MenuNumber + 1;
   }
-  
 
-  graphics.off();
-  
+
+  grDevices::graphics.off();
+
   #for now I am not adding a clean end of html footer in order to keep the pages open for appending operations
  #most browsers seem to be able to handle this just fine...
  # MyReportEnd(file=target.main);
@@ -128,20 +128,20 @@
   #return(targetBig)
 ### no return values
 }, ex=function(){
-if (interactive()){  
+if (interactive()){
   #example with plots and graphfiles being generated on the fly:
   owd=setwd(tempdir())
   system("mkdir Figures")
-  
-FramedHTML(cmds = list("plot(rnorm(100));","plot(1:10);"), 
-           HTMLobjects =list("Fig1.png", "Fig2.png"), 
+
+FramedHTML(cmds = list("plot(rnorm(100));","plot(1:10);"),
+           HTMLobjects =list("Fig1.png", "Fig2.png"),
            Captions=c("Gaussian noise","seq 1:10"),
-           MenuLabels1 = c("Label1","Label2"), 
-           MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), 
+           MenuLabels1 = c("Label1","Label2"),
+           MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"),
            Comments  = c("100 random numbers","Simple plot"), title="Test Page",
            width=480, height=480, verbose=1)
-    
-    
+
+
     #example with plots and graphfiles having been generated beforehand:
     png("Fig1.png");
       plot(rnorm(100));
@@ -149,14 +149,14 @@ FramedHTML(cmds = list("plot(rnorm(100));","plot(1:10);"),
     png("Fig2.png");
       plot(1:10);
     dev.off();
-    
-FramedHTML( HTMLobjects = list("Fig1.png", "Fig2.png"), 
-   Captions=c("Gaussian noise","seq 1:10"), 
-  MenuLabels1 = c("Label1","Label2"), 
-   MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), 
+
+FramedHTML( HTMLobjects = list("Fig1.png", "Fig2.png"),
+   Captions=c("Gaussian noise","seq 1:10"),
+  MenuLabels1 = c("Label1","Label2"),
+   MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"),
    Comments  = c("100 random numbers","Simple plot"), title="Test Page",
   width=480, height=480, verbose=1);
-    
+
     #example with absolute paths for graphfiles :
     Fig1 <- paste(tempdir(),"/Fig1.png",sep="")
     png(Fig1);
@@ -166,20 +166,20 @@ FramedHTML( HTMLobjects = list("Fig1.png", "Fig2.png"),
     png(Fig2);
       plot(1:10);
     dev.off();
-    
- FramedHTML( HTMLobjects = list(Fig1, Fig2), Captions=c("Gaussian noise","seq 1:10"), 
-    MenuLabels1 = c("Label1","Label2"), 
-    MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"), 
-    Comments  = c("100 random numbers","Simple plot"), 
+
+ FramedHTML( HTMLobjects = list(Fig1, Fig2), Captions=c("Gaussian noise","seq 1:10"),
+    MenuLabels1 = c("Label1","Label2"),
+    MenuLabels2 = c("Marvel at the graph below","scatterplots are nice"),
+    Comments  = c("100 random numbers","Simple plot"),
     title="Test Page",width=480, height=480, verbose=1);
     #cleanup:
     #system(paste("rm ", Fig1));system(paste("rm ", Fig2))
-  
+
   #example with sorted table:
   x <- cbind.data.frame(x1 = round(rnorm(10),3), x2 = round(runif(10),3));
   attr(x, "HEADER") <- "some random numbers";
-  FramedHTML(HTMLobjects = list("Fig1.png", x, "Fig2.png"), 
-    MenuLabels1 = c("Label1","Label2","Label3"), 
+  FramedHTML(HTMLobjects = list("Fig1.png", x, "Fig2.png"),
+    MenuLabels1 = c("Label1","Label2","Label3"),
     MenuLabels2 = c("Marvel at the graph below","JavaScript rocks","scatterplots are nice"),
     Captions=c("Gaussian noise","Gaussian and uniform random numbers", "seq 1:10"),Comments = NULL,
     path = "tmp", file = "index");
@@ -189,8 +189,8 @@ FramedHTML( HTMLobjects = list("Fig1.png", "Fig2.png"),
   attr(x, "HEADER") <- "some random numbers";
   y <- cbind.data.frame(y1 = rbinom(10,50,0.3), y2 = rbinom(10,100,0.15));
   attr(y, "HEADER") <- "rbinom";
-  FramedHTML(HTMLobjects = list( x, y), 
-           MenuLabels1 = c("x","y"), 
+  FramedHTML(HTMLobjects = list( x, y),
+           MenuLabels1 = c("x","y"),
            MenuLabels2 = c("JavaScript rocks","Secret numbers"),
            Captions=c("Gaussian and uniform random numbers", "Binomial draws"),Comments = NULL,
            path = "tmp", file = "index");

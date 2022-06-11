@@ -2,3 +2,4 @@ import(R2HTML)
 
 exportPattern("^[[:alpha:]]+")
 
+importFrom("methods", "is")
