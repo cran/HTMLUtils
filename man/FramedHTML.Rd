@@ -34,9 +34,7 @@ The user has a great deal of flexibility in choosing appropriate directory struc
 
   \item{Graphpath}{subdirectory of \samp{basepath/path/} containing the graphfiles; will be created if non existing}
 
-  \item{DiagnosticsPath}{
-
-}
+  \item{DiagnosticsPath}{subdirectory of \samp{basepath/path/} containing the graphfiles; will be created if non existing}
 
   \item{file}{file name of main page; '.html' extension will be added. The '_main' and '_menu' pages use this base as well.}
 

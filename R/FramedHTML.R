@@ -4,7 +4,8 @@
 (  cmds=NULL, ##<< list of commands that generates the plots. If missing, the graphfiles are assumed to exist already.
    basepath = c("./", paste(Sys.getenv("HOME"), "/public_html/",sep=""))[1],  ##<< base path of \samp{public\_html} directory
    path="tmp",  ##<< subdirectory of \code{basepath}; will be created if non existing
-   Graphpath = "Figures/", DiagnosticsPath = "Diagnostics",  ##<< subdirectory of \samp{basepath/path/} containing the graphfiles; will be created if non existing
+   Graphpath = "Figures/", 
+   DiagnosticsPath = "Diagnostics",  ##<< subdirectory of \samp{basepath/path/} containing the graphfiles; will be created if non existing
    file="tmp",   ##<< file name of main page; '.html' extension will be added. The '\_main' and '\_menu' pages use this base as well.
    HTMLobjects,  ##<< list of graph filenames, either to be created by the list of commands or to be copied to the Figures subdirectory and/or dataframes to be displayed in sortable tables.
    Captions,  ##<< vector of captions; these go directly below the graphs

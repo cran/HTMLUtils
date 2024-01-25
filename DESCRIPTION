@@ -1,8 +1,8 @@
 Package: HTMLUtils
 Type: Package
 Title: Facilitates Automated HTML Report Creation
-Version: 0.1.8
-Date: 2022-06-10
+Version: 0.1.9
+Date: 2024-01-10
 Depends: R2HTML
 Imports: methods, grDevices
 Suggests:
@@ -14,5 +14,5 @@ License: GPL
 LazyLoad: yes
 Repository: CRAN
 NeedsCompilation: no
-Packaged: 2022-06-11 08:52:27 UTC; loecherm
-Date/Publication: 2022-06-11 09:50:02 UTC
+Packaged: 2024-01-25 17:47:05 UTC; loecherm
+Date/Publication: 2024-01-25 20:00:03 UTC
